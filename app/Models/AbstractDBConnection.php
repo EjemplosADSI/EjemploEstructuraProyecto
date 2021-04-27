@@ -192,12 +192,16 @@ abstract class AbstractDBConnection {
      */
     public function countRowsTable(string $table = null) : ?int {
         try{
+            if(!$this->isConnected()){
+                $this->Connect();
+            }
             if(!empty($table)){
                 $sql = "SELECT COUNT(*) FROM ".$table;
                 if ($resultado = $this->objConnection->query($sql)) {
                     return (int) $resultado->fetchColumn();
                 }
             }
+            $this->Disconnect();
         }catch(PDOException | Exception $e){
             GeneralFunctions::logFile('Exception',$e, 'error');
         }

@@ -14,3 +14,80 @@
 (
 )
   
+[2021-04-27T13:59:29.969282+00:00] General.ERROR: Exception  
+[2021-04-27T13:59:29.971004+00:00] General.ERROR: Archivo: C:\laragon\www\EjemploEstructuraProyecto\app\Models\AbstractDBConnection.php  
+[2021-04-27T13:59:29.971217+00:00] General.ERROR: Line: 128  
+[2021-04-27T13:59:29.971395+00:00] General.ERROR: Mensaje: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '2' for key 'PRIMARY'  
+[2021-04-27T13:59:29.971718+00:00] General.ERROR: Array
+(
+    [0] => Array
+        (
+            [file] => C:\laragon\www\EjemploEstructuraProyecto\app\Models\AbstractDBConnection.php
+            [line] => 128
+            [function] => execute
+            [class] => PDOStatement
+            [type] => ->
+            [args] => Array
+                (
+                )
+
+        )
+
+    [1] => Array
+        (
+            [file] => C:\laragon\www\EjemploEstructuraProyecto\app\Models\Usuarios.php
+            [line] => 174
+            [function] => insertRow
+            [class] => App\Models\AbstractDBConnection
+            [type] => ->
+            [args] => Array
+                (
+                    [0] => INSERT INTO usuarios VALUES (
+            :id,:nombres,:apellidos,:direccion,:fecha_nacimiento,:telefono,:estado
+        )
+                    [1] => Array
+                        (
+                            [:id] => 2
+                            [:nombres] => Juan
+                            [:apellidos] => Perez
+                            [:direccion] => Sogamoso
+                            [:fecha_nacimiento] => 1900-01-01
+                            [:telefono] => 3118864151
+                            [:estado] => Inactivo
+                        )
+
+                )
+
+        )
+
+    [2] => Array
+        (
+            [file] => C:\laragon\www\EjemploEstructuraProyecto\app\Models\Usuarios.php
+            [line] => 187
+            [function] => save
+            [class] => App\Models\Usuarios
+            [type] => ->
+            [args] => Array
+                (
+                    [0] => INSERT INTO usuarios VALUES (
+            :id,:nombres,:apellidos,:direccion,:fecha_nacimiento,:telefono,:estado
+        )
+                )
+
+        )
+
+    [3] => Array
+        (
+            [file] => C:\laragon\www\EjemploEstructuraProyecto\test\testUsers.php
+            [line] => 34
+            [function] => insert
+            [class] => App\Models\Usuarios
+            [type] => ->
+            [args] => Array
+                (
+                )
+
+        )
+
+)
+  

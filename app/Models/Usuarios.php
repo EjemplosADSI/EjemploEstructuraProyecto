@@ -1,11 +1,15 @@
 <?php
-
-
 namespace App\Models;
 
+require ("AbstractDBConnection.php");
+require (__DIR__ ."\..\Interfaces\Model.php");
+require(__DIR__ .'/../../vendor/autoload.php');
+
+use App\Interfaces\Model;
+use App\Models\AbstractDBConnection;
 use Carbon\Carbon;
 
-class Usuarios extends AbstractDBConnection
+class Usuarios extends AbstractDBConnection implements Model
 {
     private ?int $id;
     private string $nombres;
@@ -180,7 +184,14 @@ class Usuarios extends AbstractDBConnection
         $query = "INSERT INTO usuarios VALUES (
             :id,:nombres,:apellidos,:direccion,:fecha_nacimiento,:telefono,:estado
         )";
-        return $this->save($query);
+        //return $this->save($query);
+        if($this->save($query)){
+            $idUsuario = $this->getLastId('usuarios');
+            $this->setId($idUsuario);
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -195,4 +206,50 @@ class Usuarios extends AbstractDBConnection
         return $this->save($query);
     }
 
+    function deleted()
+    {
+        $this->setEstado("Inactivo"); //Cambia el estado del Usuario
+        return $this->update();                    //Guarda los cambios..
+    }
+
+    //SELECT * FROM usuarios WHERE nombre = 'Diego'
+    static function search($query): ?array
+    {
+        try {
+            $arrUsuarios = array();
+            $tmp = new Usuarios();
+
+            $tmp->Connect();
+            $getrows = $tmp->getRows($query);
+            $tmp->Disconnect();
+
+            if (!empty($getrows)) {
+                foreach ($getrows as $valor) {
+                    $Usuario = new Usuarios($valor);
+                    array_push($arrUsuarios, $Usuario);
+                    unset($Usuario); //Borrar el contenido del objeto
+                }
+                return $arrUsuarios;
+            }
+            return null;
+        } catch (Exception $e) {
+            GeneralFunctions::logFile('Exception', $e);
+        }
+        return null;
+    }
+
+    static function searchForId(int $id): ?object
+    {
+        // TODO: Implement searchForId() method.
+    }
+
+    static function getAll(): ?array
+    {
+        // TODO: Implement getAll() method.
+    }
+
+    public function jsonSerialize()
+    {
+        // TODO: Implement jsonSerialize() method.
+    }
 }
