@@ -238,18 +238,40 @@ class Usuarios extends AbstractDBConnection implements Model
         return null;
     }
 
-    static function searchForId(int $id): ?object
+    static function searchForId(int $id): ?Usuarios
     {
-        // TODO: Implement searchForId() method.
+        try {
+            if ($id > 0) {
+                $tmpUsuario = new Usuarios();
+                $tmpUsuario->Connect();
+                $getrow = $tmpUsuario->getRow("SELECT * FROM usuarios WHERE id = ?", array($id) );
+
+                $tmpUsuario->Disconnect();
+                return ($getrow) ? new Usuarios($getrow) : null;
+            } else {
+                throw new Exception('Id de usuario Invalido');
+            }
+        } catch (Exception $e) {
+            GeneralFunctions::logFile('Exception', $e);
+        }
+        return null;
     }
 
     static function getAll(): ?array
     {
-        // TODO: Implement getAll() method.
+        return Usuarios::search("SELECT * FROM usuarios");
     }
 
     public function jsonSerialize()
     {
-        // TODO: Implement jsonSerialize() method.
+        return [
+            'id' => $this->getId(),
+            'nombres' => $this->getNombres(),
+            'apellidos' => $this->getApellidos(),
+            'direccion' => $this->getDireccion(),
+            'fecha_nacimiento' => $this->getFechaNacimiento()->toDateString(),
+            'telefono' => $this->getTelefono(),
+            'estado' => $this->getEstado(),
+        ];
     }
 }
