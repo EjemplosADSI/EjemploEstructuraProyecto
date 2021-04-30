@@ -168,3 +168,165 @@
 
 )
   
+[2021-04-30T14:39:57.663744+00:00] General.ERROR: Exception  
+[2021-04-30T14:39:57.666177+00:00] General.ERROR: Archivo: C:\laragon\www\EjemploEstructuraProyecto\app\Models\AbstractDBConnection.php  
+[2021-04-30T14:39:57.666415+00:00] General.ERROR: Line: 102  
+[2021-04-30T14:39:57.666613+00:00] General.ERROR: Mensaje: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ejemploproyecto.usuario' doesn't exist  
+[2021-04-30T14:39:57.667098+00:00] General.ERROR: Array
+(
+    [0] => Array
+        (
+            [file] => C:\laragon\www\EjemploEstructuraProyecto\app\Models\AbstractDBConnection.php
+            [line] => 102
+            [function] => execute
+            [class] => PDOStatement
+            [type] => ->
+            [args] => Array
+                (
+                    [0] => Array
+                        (
+                        )
+
+                )
+
+        )
+
+    [1] => Array
+        (
+            [file] => C:\laragon\www\EjemploEstructuraProyecto\app\Models\Usuarios.php
+            [line] => 229
+            [function] => getRows
+            [class] => App\Models\AbstractDBConnection
+            [type] => ->
+            [args] => Array
+                (
+                    [0] => SELECT * FROM usuario WHERE nombres = 'Diego' and apellidos = 'Ojeda'
+                )
+
+        )
+
+    [2] => Array
+        (
+            [file] => C:\laragon\www\EjemploEstructuraProyecto\app\Models\Usuarios.php
+            [line] => 41
+            [function] => search
+            [class] => App\Models\Usuarios
+            [type] => ::
+            [args] => Array
+                (
+                    [0] => SELECT * FROM usuario WHERE nombres = 'Diego' and apellidos = 'Ojeda'
+                )
+
+        )
+
+    [3] => Array
+        (
+            [file] => C:\laragon\www\EjemploEstructuraProyecto\app\Controllers\UsuariosController.php
+            [line] => 30
+            [function] => usuarioRegistrado
+            [class] => App\Models\Usuarios
+            [type] => ::
+            [args] => Array
+                (
+                    [0] => Diego
+                    [1] => Ojeda
+                )
+
+        )
+
+    [4] => Array
+        (
+            [file] => C:\laragon\www\EjemploEstructuraProyecto\app\Controllers\MainController.php
+            [line] => 29
+            [function] => create
+            [class] => App\Controllers\UsuariosController
+            [type] => ->
+            [args] => Array
+                (
+                )
+
+        )
+
+)
+  
+[2021-04-30T14:50:21.096992+00:00] General.ERROR: Exception  
+[2021-04-30T14:50:21.098170+00:00] General.ERROR: Archivo: C:\laragon\www\EjemploEstructuraProyecto\app\Models\AbstractDBConnection.php  
+[2021-04-30T14:50:21.098405+00:00] General.ERROR: Line: 102  
+[2021-04-30T14:50:21.099276+00:00] General.ERROR: Mensaje: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ejemploproyecto.usuario' doesn't exist  
+[2021-04-30T14:50:21.100428+00:00] General.ERROR: Array
+(
+    [0] => Array
+        (
+            [file] => C:\laragon\www\EjemploEstructuraProyecto\app\Models\AbstractDBConnection.php
+            [line] => 102
+            [function] => execute
+            [class] => PDOStatement
+            [type] => ->
+            [args] => Array
+                (
+                    [0] => Array
+                        (
+                        )
+
+                )
+
+        )
+
+    [1] => Array
+        (
+            [file] => C:\laragon\www\EjemploEstructuraProyecto\app\Models\Usuarios.php
+            [line] => 229
+            [function] => getRows
+            [class] => App\Models\AbstractDBConnection
+            [type] => ->
+            [args] => Array
+                (
+                    [0] => SELECT * FROM usuario WHERE nombres = 'Juan' and apellidos = 'Perez'
+                )
+
+        )
+
+    [2] => Array
+        (
+            [file] => C:\laragon\www\EjemploEstructuraProyecto\app\Models\Usuarios.php
+            [line] => 41
+            [function] => search
+            [class] => App\Models\Usuarios
+            [type] => ::
+            [args] => Array
+                (
+                    [0] => SELECT * FROM usuario WHERE nombres = 'Juan' and apellidos = 'Perez'
+                )
+
+        )
+
+    [3] => Array
+        (
+            [file] => C:\laragon\www\EjemploEstructuraProyecto\app\Controllers\UsuariosController.php
+            [line] => 30
+            [function] => usuarioRegistrado
+            [class] => App\Models\Usuarios
+            [type] => ::
+            [args] => Array
+                (
+                    [0] => Juan
+                    [1] => Perez
+                )
+
+        )
+
+    [4] => Array
+        (
+            [file] => C:\laragon\www\EjemploEstructuraProyecto\app\Controllers\MainController.php
+            [line] => 29
+            [function] => create
+            [class] => App\Controllers\UsuariosController
+            [type] => ->
+            [args] => Array
+                (
+                )
+
+        )
+
+)
+  

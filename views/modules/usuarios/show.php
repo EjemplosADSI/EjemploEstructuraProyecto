@@ -9,7 +9,7 @@ use App\Models\Usuarios;
 
 $nameModel = "Usuario";
 $pluralModel = $nameModel . 's';
-$frmSession = $_SESSION['frm' . $pluralModel] ?? NULL;
+//$frmSession = $_SESSION['frm' . $pluralModel] ?? NULL;
 ?>
 <!DOCTYPE html>
 <html>
@@ -88,13 +88,8 @@ $frmSession = $_SESSION['frm' . $pluralModel] ?? NULL;
                                                     <?= $DataUsuario->getNombres() . " " . $DataUsuario->getApellidos() ?>
                                                 </p>
                                                 <hr>
-                                                <strong><i class="fas fa-user mr-1"></i> Documento</strong>
-                                                <p class="text-muted"><?= $DataUsuario->getTipoDocumento() . ": " . $DataUsuario->getDocumento() ?></p>
-                                                <hr>
-                                                <strong><i class="fas fa-map-marker-alt mr-1"></i> Direccion</strong>
-                                                <p class="text-muted"><?= $DataUsuario->getDireccion() ?>
-                                                    , <?= $DataUsuario->getMunicipio()->getNombre() ?>
-                                                    - <?= $DataUsuario->getMunicipio()->getDepartamento()->getNombre() ?></p>
+                                                <strong><i class="fas fa-phone mr-1"></i> Direccion</strong>
+                                                <p class="text-muted"><?= $DataUsuario->getDireccion() ?></p>
                                                 <hr>
                                                 <strong><i class="fas fa-calendar mr-1"></i> Fecha Nacimiento</strong>
                                                 <p class="text-muted"><?= $DataUsuario->getFechaNacimiento()->translatedFormat('l, j \\de F Y'); ?>
@@ -106,27 +101,9 @@ $frmSession = $_SESSION['frm' . $pluralModel] ?? NULL;
                                                 <strong><i class="fas fa-phone mr-1"></i> Telefono</strong>
                                                 <p class="text-muted"><?= $DataUsuario->getTelefono() ?></p>
                                                 <hr>
-                                                <strong><i class="fas fa-calendar-check mr-1"></i> Fecha
-                                                    Registro</strong>
-                                                <p class="text-muted"><?= $DataUsuario->getCreatedat()->toDateTimeString(); ?></p>
-                                                <hr>
-                                                <strong><i class="far fa-file-alt mr-1"></i> Estado y Rol</strong>
-                                                <p class="text-muted"><?= $DataUsuario->getEstado() . " - " . $DataUsuario->getRol() ?></p>
+                                                <strong><i class="far fa-file-alt mr-1"></i> Estado</strong>
+                                                <p class="text-muted"><?= $DataUsuario->getEstado() ?></p>
                                                 </p>
-                                            </div>
-                                            <div class="col-sm-2">
-                                                <div class="row info-box">
-                                                    <div class="col-12">
-                                                        <h4>Foto Perfil</h4>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <?php if (!empty($DataUsuario->getFoto())) { ?>
-                                                            <img class='img-thumbnail rounded'
-                                                                 src='../../public/uploadFiles/photos/<?= $DataUsuario->getFoto(); ?>'
-                                                                 alt="Foto Perfil">
-                                                        <?php } ?>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>

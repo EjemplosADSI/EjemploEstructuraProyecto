@@ -36,6 +36,12 @@ class Usuarios extends AbstractDBConnection implements Model
         $this->setEstado($usuario['estado'] ?? '');
     }
 
+    public static function usuarioRegistrado(string $nombres, string $apellidos) : bool
+    {
+        $usrTmp = Usuarios::search("SELECT * FROM usuario WHERE nombres = '$nombres' and apellidos = '$apellidos'");
+        return (!empty($usrTmp)) ? true : false;
+    }
+
     public function __destruct()
     {
         if ($this->isConnected()) {
@@ -112,7 +118,7 @@ class Usuarios extends AbstractDBConnection implements Model
      */
     public function getFechaNacimiento(): Carbon
     {
-        return $this->fecha_nacimiento;
+        return $this->fecha_nacimiento->locale('es');
     }
 
     /**
