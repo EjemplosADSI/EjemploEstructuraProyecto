@@ -48,6 +48,7 @@ if(!empty($objUserCarlos)){
 }
 
 $arrUsers = Usuarios::getAll();
+$arrUsers = Usuarios::getAll();
 if(!empty($arrUsers)){
     /* @var $arrUsers Usuarios[] */
     foreach ($arrUsers as $Usuario){
